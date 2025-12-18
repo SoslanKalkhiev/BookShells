@@ -1,0 +1,102 @@
+body{
+    margin: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    line-height: 1.6;
+    background: #292826;
+}
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right:0;
+    height: auto;
+    width: 100%;
+    background: #292826;
+    box-shadow: 0 4px 4px #c5800097;
+    z-index: 100;
+}
+.information, .search { margin-top: 20px;}
+.navigation{ margin-left: 20px; margin-bottom: 10px;}
+
+a{
+    display: flex;
+    float: right;
+    margin-right: 30px;
+    text-decoration: none;
+    color: #E0DFDC;
+}
+.library{
+    display: flex;
+    float: right;
+    margin-right: 20px;
+    padding: 3px 30px;
+    color:  #e19609;
+    border-radius: 14px;
+    border: 1px solid  #e19609;
+    background: #292826;
+}
+.library:hover{background: #DFB971;color: #543402;}
+/* #ch:checked{background: #DFB971;color: #543402;} */
+
+.book-search{
+    width:85%;
+    margin: 0 20px;
+    background: #292826;
+    border-radius: 40px;
+    border: 1px solid  #e19609;
+    padding-left: 10px;
+    color: #e19609;
+}
+.search-btn{
+    background: #DFB971;
+    color: #543402;
+    padding: 10px 30px;
+    border-radius: 50px;
+}
+/* .search-btn:checked{background: #543402; color:#DFB971;} */
+.all, .classic, .fantasy{
+    background: #DFB971;
+    color: #543402;
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+
+.catalog{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; 
+    margin: 200px 60px;
+}
+.book1{
+    width: 240px;
+    height: 370px;
+    margin: 50px 50px;
+    border-radius: 10px;
+    border: 1px solid #C58000;
+    box-shadow: 4px 4px 4px #e195099b;
+}
+.book{width: 240px; height: 290px; border-radius: 10px;}
+/* .description{margin-top:110} */
+.name, .author{
+    color: #E0DFDC;
+    margin: 0 10px;
+    font-size:smaller;
+}
+
+.genre-rating{display: flex; flex-direction: row; background: #00c50397;}
+.genre{
+    color:#cca867;
+    background: #292826;
+    border: 1px solid #B79557;
+    border-radius: 8px;
+    padding: 1px 5px;
+    margin-left: 10px;
+    font-size: smaller;
+}
+.rating{
+    display: flex;
+    float: right; /* ПОЧЕМУ НЕ РАБОТАЕТ!!??!?? */
+    /* margin-left: 110px; */
+    color: #C58000; 
+}
