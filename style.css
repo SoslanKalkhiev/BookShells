@@ -4,7 +4,7 @@ body{
     line-height: 1.6;
     background: #292826;
 }
-header{
+.header-main{
     position: fixed;
     top: 0;
     left: 0;
@@ -101,3 +101,109 @@ a{
     color: #C58000; 
 }
 /*чтоб отправить изменение ты просто берешь и ну и отправляешь его*/
+/* Страница книги */
+header{
+    height: 50px;
+    /* box-shadow: 0 2px 2px #c5800097; */
+}
+.back{
+    display: flex;
+    float: left;
+    margin-left: 20px;
+    background: #292826;
+    color: #E0DFDC;
+}
+.main-div{
+    display: grid;
+    grid-template-areas: 
+    "one two";
+    grid-template-columns: 500px 1fr;
+}
+.img-buttons{
+    display: flex;
+    flex-direction: column;
+    grid-area: one;
+}
+.all-about-book{grid-area: two;}
+
+.img-on-page{
+    margin: 30px 50px;
+    width: 400px;
+    height: 500px;
+    border: 2px solid #C58000;
+    border-radius: 4px;
+}
+.Add{
+    font-size: large;
+    height: 40px;
+    width: 360px;
+    margin: 20px 70px;
+    border-radius: 12px;
+    background: #DEB461;
+    color: #292826;
+}
+.all-about-book{
+    margin-top: 30px;
+    display: grid;
+    grid-template-areas: 
+    "a b"
+    "c c"
+    "d d";
+}
+.book-information{
+    grid-area: a;
+    box-shadow: -2px -2px  #c5800097;
+    width: 450px;
+    height: 150px;
+}
+.name-inf{
+    font-size:larger;
+    margin: 2px 7px;
+    color:#DEB461;
+}
+.author-inf{
+    font-size: medium;
+    margin: 2px 7px;
+    color: #B79557;
+}
+.publish-house, .pages-number{
+    font-size: medium;
+    margin: 0 7px;
+    color: #e0dfdcdd;
+}
+.genre-inf{
+    margin: 5px 7px;
+    color:#cca867;
+    background: #292826;
+    border: 1px solid #B79557;
+    border-radius: 8px;
+    padding: 1px 5px;
+}
+.your-rating{/*display:flex; float: right;*/ color: #B79557;}
+.in-collections{
+    grid-area: b;
+    margin-left: 40px;
+    color: #e0dfdcdd;
+    box-shadow: 2px 2px  #c5800097;
+    width: 400px;
+    height: 150px;
+}
+.description{
+    grid-area: c;
+    color: #c2bfb7;
+    height: 300px;
+    width: 92%;
+}
+.review{
+    grid-area: d;
+    color:#e0dfdcdd;
+}
+.input-review{
+    height: 50px;
+    width: 92%;
+    padding-left: 10px;
+    color:#C58000;
+    background: #292826;
+    border: 1px solid #C58000;
+    border-radius: 2px;
+}
