@@ -16,7 +16,13 @@ body{
     z-index: 100;
 }
 .information, .search { margin-top: 20px;}
-.navigation{ margin-left: 20px; margin-bottom: 10px;}
+.navigation{ 
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
 
 a{
     display: flex;
@@ -84,7 +90,7 @@ a{
     font-size:smaller;
 }
 
-.genre-rating{display: flex; flex-direction: row; background: #00c50397;}
+.genre-rating{display: flex; flex-direction: row;}
 .genre{
     color:#cca867;
     background: #292826;
@@ -101,6 +107,7 @@ a{
     color: #C58000; 
 }
 /*чтоб отправить изменение ты просто берешь и ну и отправляешь его*/
+
 /* Страница книги */
 header{
     height: 50px;
@@ -207,3 +214,75 @@ header{
     border: 1px solid #C58000;
     border-radius: 2px;
 }
+
+/*Страница библиотеки*/
+h1{
+    color: #FFE7BB;
+    font-size: 40px;
+    margin: 0 30px;
+}
+h4, h2{
+    color: #c2bfb7;
+    margin: 0 30px;
+}
+.library-header button{
+    display: flex; 
+    float: right;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    padding: 2px 11px;
+    font-size: 40px;
+    margin-top: 40px;
+    background: #DEB461;
+}
+.library-header p{ 
+    display: flex; 
+    float: right;
+    width: 80px;
+    margin: 40px 30px;
+    color: #cca867;
+}
+
+.collections{
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 80px;
+    /* margin-left: 80px; */
+}
+.collections button{
+    width: 200px;
+    height: 45px;
+    margin-top: 0px;
+    border-radius: 8px;
+}
+.collections p{
+    margin: 0px;
+    margin-left: 200px;
+}
+.reading{
+    background: #6d9fef79;
+    color: #8eb3ec;
+    border: 2px solid #8eb3ec;
+}
+.reading-cnt{color: #8eb3ec;}
+.read{
+    background: #6def764c;
+    color: #6def7679;
+    border: 2px solid #6def7679;
+}
+.read-cnt{color: #6def7679;}
+.wanna-read{
+    background: #ef6def4c;
+    color: #f4d1f462;
+    border: 2px solid #f5a5f54c;
+}
+.wanna-read-cnt{color: #f4d1f462;}
+.recent{
+    background: #ea9e1260;
+    color: #f3d7a47f;
+    border: 2px solid #f3bf5e7f;
+}
+.recent-cnt{color:#f7d5957f;}
+.collection-1{color:#f7daa47f;}
+
