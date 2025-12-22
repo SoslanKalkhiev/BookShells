@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 body{
     margin: 0;
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -286,3 +289,135 @@ h4, h2{
 .recent-cnt{color:#f7d5957f;}
 .collection-1{color:#f7daa47f;}
 
+.prof-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+.profile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.profile-left {
+  display: flex;
+  gap: 20px;
+}
+
+.avatar {
+  width: 72px;
+  height: 72px;
+  background: #ddd;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.badges {
+  margin-top: 8px;
+}
+
+.badge {
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  margin-right: 6px;
+}
+
+.badge.yellow { background: #ffe2a8; }
+.badge.gray { background: #e0e0e0; }
+
+.profile-stats {
+  display: flex;
+  gap: 40px;
+  text-align: center;
+  color: #FFE7BB;
+}
+
+.profile-stats strong {
+  font-size: 24px;
+  
+}
+
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+  margin: 30px 0;
+}
+
+.card {
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.card .big {
+  font-size: 22px;
+   font-weight: bold;
+}
+
+.blue { background: #dbe7ff; }
+.green { background: #dff5d8; }
+.orange { background: #ffd8b0; }
+.yellow { background: #fff3a0; }
+.red { background: #ffb3b3; }
+.purple { background: #e7d9ff; }
+
+
+.block {
+  border: 1px solid #c5800097;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+
+.goal {
+  display: grid;
+  grid-template-columns: 200px 1fr 120px;
+  align-items: center;
+  margin: 12px 0;
+  color: #c2bfb7;
+}
+
+.progress {
+  height: 10px;
+  background: #c2bfb7;
+  border-radius: 6px;
+}
+
+.progress-fill {
+  background: #c5800097;
+  height: 100%;
+  border-radius: 6px;
+}
+
+
+.achievements {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+.achievement {
+  padding: 16px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.achievement.active {
+  border: 2px solid #ffcc66;
+}
+
+.achievement.locked {
+  border: 2px solid #ccc;
+  opacity: 0.5;
+}
+.achievement-description {
+  color: #c2bfb7;
+  font-size: smaller;
+  margin-top: 4px;
+}
