@@ -18,7 +18,7 @@ body{
     box-shadow: 0 4px 4px #c5800097;
     z-index: 100;
 }
-.information, .search { margin-top: 20px;}
+.information, .search{ margin-top: 20px;}
 .navigation{ 
     display: flex;
     flex-direction: row;
@@ -34,7 +34,7 @@ a{
     text-decoration: none;
     color: #E0DFDC;
 }
-.library{
+.library, .main-page{
     display: flex;
     float: right;
     margin-right: 20px;
@@ -42,7 +42,7 @@ a{
     color:  #e19609;
     border-radius: 14px;
     border: 1px solid  #e19609;
-    background: #292826;
+    background: none;
 }
 .library:hover{background: #DFB971;color: #543402;}
 /* #ch:checked{background: #DFB971;color: #543402;} */
@@ -120,7 +120,7 @@ header{
     display: flex;
     float: left;
     margin-left: 20px;
-    background: #292826;
+    background: none;
     color: #E0DFDC;
 }
 .main-div{
@@ -421,3 +421,82 @@ h4, h2{
   font-size: smaller;
   margin-top: 4px;
 }
+
+
+.header-collection{
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right:0;
+  height: auto;
+  width: 100%;
+  background: #8eb3ec;
+  z-index: 100;
+}
+.inf-collection{
+  margin-top: 20px;
+}
+.about-collection{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+.about-collection p{
+  font-size: 34px;
+  color: #2d5b9f;
+  margin: 20px 30px;
+}
+.about-collection button{
+  display: flex;
+  float: right; /*Реально, почему не работает 😭*/
+  margin: 40px 20px;
+  padding: 1px 14px;
+  width: 160px;
+  height: 20px;
+  border-radius: 4px;
+  background: none;
+  color: #2d5b9f;
+}
+
+.chose-collection{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; 
+    margin: 160px 50px;
+    /* margin: 50px 50px;
+    border-radius: 10px;
+    border: 1px solid #C58000;
+    box-shadow: 4px 4px 4px #e195099b; */
+}
+.chose-collection .book1{
+    width: 300px;
+    height: 160px;
+    display: flex;
+    flex-direction: row;
+}
+
+.chose-collection .book{width: 130px; height: 158px; border-radius: 10px;}
+.book-desc .name{
+  margin: 0 5px;
+  color: #B79557;
+  font-size:medium;
+}
+.book-desc .author{
+  margin: 5px 5px;
+  color: #B79557;
+  font-size: smaller;
+}
+.book-desc .begin, .book-desc .end, .book-desc .rating{
+  margin: 0 5px;
+  color: #c2bfb7;
+  font-size: smaller;
+}
+.book-desc .genre-rating{
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+}
+.book-desc .genre{width: 60px; margin: 0 5px;}
