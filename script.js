@@ -5,6 +5,7 @@ const catalog = document.getElementById('catalog');
         
 
 const book1 = {
+    id:"book1",
     name:"Мцыри",
     image:"images/Mziry.png",
     author:"М.Ю. Лермонтов",
@@ -12,6 +13,7 @@ const book1 = {
     rating:"4.8"
 }
 const book2 = {
+    id:"book2",
     name:"Хэллоуин",
     image:"images/pumpkin.png",
     author:"Элизабет Афтон",
@@ -19,28 +21,22 @@ const book2 = {
     rating:"3.7"
 }
 
-
-
-// let allbooks = /* JSON.parse(localStorage.getItem('books')) ||*/ [];
 const allbooks = [book1, book2];
 const prosebooks = [book2];
 const classicbooks = [book1];
-// allbooks.push(book);
 
-// function SaveLocalStorage(){
-//     localStorage.setItem('books',JSON.stringify(allbooks))
-// }
+
 function renderBooks(books){
     books.forEach(book => {
         const card = document.createElement('div');
         card.className = 'book';
-        card.id = 'book1';
+        card.id = book.id;
         card.innerHTML = `
-        ${book.image !='' ?`<img class="img-book" src="${book.image}">`:''}
-        <p class="name">${book.name}</p>
-        <p class="author">${book.author}</p>
-        <label class="genre">${book.genre}</label>
-        <div class="rating">⭐${book.rating}</div>
+        ${book.image !='' ?`<img id=${book.id} class="img-book" src="${book.image}">`:''}
+        <p id=${book.id} class="name">${book.name}</p>
+        <p id=${book.id} class="author">${book.author}</p>
+        <label id=${book.id} class="genre">${book.genre}</label>
+        <div id=${book.id} class="rating">⭐${book.rating}</div>
         `
         catalog.appendChild(card);
     });
@@ -51,12 +47,13 @@ function searchBooks(title){
         {
             const card = document.createElement('div');
             card.className = 'book';
+            card.id = book.id;
             card.innerHTML = `
-            ${book.image !='' ?`<img class="img-book" src="${book.image}">`:''}
-            <p class="name">${book.name}</p>
-            <p class="author">${book.author}</p>
-            <label class="genre">${book.genre}</label>
-            <div class="rating">⭐${book.rating}</div>
+            ${book.image !='' ?`<img id=${book.id} class="img-book" src="${book.image}">`:''}
+            <p id=${book.id} class="name">${book.name}</p>
+            <p id=${book.id} class="author">${book.author}</p>
+            <label id=${book.id} class="genre">${book.genre}</label>
+            <div id=${book.id} class="rating">⭐${book.rating}</div>
             `
             catalog.appendChild(card);
             return;
@@ -86,20 +83,9 @@ header.addEventListener('click',(event)=>{
 
 catalog.addEventListener('click',(event)=>{
     if(event.target.classList!="catalog"){
+        const item = allbooks.find((book)=> book.id == event.target.id);
+        localStorage.setItem("book", JSON.stringify(item));
         window.location.href = `book.html`;
     }
 });
-// list.addEventListener('click',(event)=>{
-//     if(event.target.classList.contains("details-btn")){
-//         const id = event.target.dataset.id;
-//         window.location.href = `recipe.html?id=${id}`;
-//         return;
-//     }
-//     if(event.target.classList.contains="delete-btn"){
-//         const id = Number(event.target.dataset.id);
-//         recipes = recipes.filter((r)=> r.id !== id);
-//         SaveLocalStorage();
-//         renderRecipes();
-//     }
-// });
 renderBooks(allbooks);
