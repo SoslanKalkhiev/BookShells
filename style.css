@@ -85,7 +85,7 @@ a{
     border: 1px solid #C58000;
     box-shadow: 4px 4px 4px #e195099b;
 }
-.img-book{width: 240px; height: 290px; border-radius: 10px;}
+.img-book{width: 238px; height: 290px; border-radius: 10px;}
 /* .description{margin-top:110} */
 .name, .author{
     color: #E0DFDC;
@@ -93,7 +93,13 @@ a{
     font-size:smaller;
 }
 
-/* .genre-rating{display: flex; flex-direction: row;} */
+.genre-rating{
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  }
 .genre{
     color:#cca867;
     background: #292826;
@@ -105,8 +111,8 @@ a{
 }
 .rating{
     display: flex;
-    float: right; /* ПОЧЕМУ НЕ РАБОТАЕТ!!??!?? */
-    /* margin-left: 110px; */
+    float: right; 
+    margin-right: 10px;
     color: #C58000; 
 }
 /*чтоб отправить изменение ты просто берешь и ну и отправляешь его*/
@@ -137,7 +143,8 @@ header{
 .all-about-book{grid-area: two;}
 
 .img-on-page{
-    margin: 30px 50px;
+    margin: 0 50px;
+    margin-top: 30px;
     width: 400px;
     height: 500px;
     border: 2px solid #C58000;
@@ -147,10 +154,21 @@ header{
     font-size: large;
     height: 40px;
     width: 360px;
-    margin: 20px 70px;
+    margin: 0 70px;
+    margin-top: 30px;
     border-radius: 12px;
     background: #DEB461;
     color: #292826;
+}
+select{
+    height: 30px;
+    width: 360px;
+    margin: 0 70px;
+    margin-top: 20px;
+    border-radius: 12px;
+    background: #292826;
+    color: #DEB461;
+    border: 1px solid #C58000;
 }
 .all-about-book{
     margin-top: 30px;
@@ -158,6 +176,7 @@ header{
     grid-template-areas: 
     "a b"
     "c c"
+    "t t"
     "d d";
 }
 .book-information{
@@ -189,8 +208,38 @@ header{
     border-radius: 8px;
     padding: 1px 5px;
 }
-.your-rating{/*display:flex; float: right;*/ color: #B79557;}
+.your-rating{
+  display:flex; 
+  flex-direction: row;
+  justify-content: space-between;
+  color: #B79557;
+}
+.your-rating p{
+  font-size: 16px;
+  margin: 5px 0;
+}
+.your-rating input{
+  width: 45px;
+  height: 25px;
+  margin: 5px 10px;
+  color:  #e19609;
+  border-radius: 10px;
+  border: 1px solid  #e19609;
+  background: none;
+}
+.your-rating button{
+  width: 45px;
+  height: 30px;
+  margin: 0 10px;
+  color:  #e19609;
+  border-radius: 10px;
+  border: 1px solid  #e19609;
+  background: none;
+}
+.your-rating button:hover{background: #DFB971;color: #543402;}
 .in-collections{
+  display: flex;
+  flex-wrap: wrap;
     grid-area: b;
     margin-left: 40px;
     color: #e0dfdcdd;
@@ -201,8 +250,15 @@ header{
 .description{
     grid-area: c;
     color: #c2bfb7;
-    height: 300px;
+    height: 120px;
     width: 92%;
+}
+.description p, .text-review p{ margin: 0 0;}
+.text-review{
+  grid-area: t;
+  color: #c2bfb7;
+  height: 180px;
+  width: 92%;
 }
 .review{
     grid-area: d;
@@ -217,6 +273,16 @@ header{
     border: 1px solid #C58000;
     border-radius: 2px;
 }
+.Ok{
+  width: 40px;
+  height: 40px;
+  padding-right: 8px;
+  color:  #e19609;
+  border-radius: 10px;
+  border: 1px solid  #e19609;
+  background: none;
+}
+.Ok:hover{background: #DFB971;color: #543402;}
 
 /*Страница библиотеки*/
 h1{
@@ -247,19 +313,19 @@ h4, h2{
     color: #cca867;
 }
 
-.collections{
+.collections, .my-collections{
     display: flex;
     justify-content: space-between;
     margin: 30px 80px;
     /* margin-left: 80px; */
 }
-.collections button{
+.collections button, .my-collections button{
     width: 200px;
     height: 45px;
     margin-top: 0px;
     border-radius: 8px;
 }
-.collections p{
+.collections p, .my-collections p{
     margin: 0px;
     margin-left: 200px;
 }

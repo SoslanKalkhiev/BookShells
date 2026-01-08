@@ -9,7 +9,7 @@
 <body>
     <header>
         <div class="information">
-            <a href="" class="back">Назад, на главную</a>
+            <a href="index.html" class="back"><- Назад, на главную</a>
             <a href="">Профиль</a>
             <button class="library">Библиотека</button>
         </div>
@@ -22,17 +22,17 @@
         <h4>Управляйте своей коллекцией книг</h4>
     </div>
     
-    <div class="collections">
-        <div> <p class="reading-cnt">0</p> <button class="reading">Читаю сейчас</button></div>
-        <div> <p class="read-cnt">0</p> <button class="read">Прочитанные</button> </div>
-        <div> <p class="wanna-read-cnt">0</p> <button class="wanna-read">Хочу прочитать</button></div>
-        <div> <p class="recent-cnt">0</p> <button class="recent">Надавно просмотренные</button></div>
+    <div class="collections" id="collections">
+        <div> <p class="reading-cnt" id="reading-cnt">0</p> <button class="reading" id="reading">Читаю сейчас</button></div>
+        <div> <p class="read-cnt" id="read-cnt">0</p> <button class="read" id="read">Прочитанные</button> </div>
+        <div> <p class="wanna-read-cnt" id="wanna-read-cnt">0</p> <button class="wanna-read" id="wanna-read">Хочу прочитать</button></div>
+        <div> <p class="recent-cnt" id="recent-cnt">0</p> <button class="recent" id="recent">Нeдавно просмотренные</button></div>
     </div>
 
     <h2>Мои коллекции</h2>
-    <div class="collections">
+    <div class="my-collections">
         <div><p class="collection-1">1</p> <button class="recent">Поэзия</button> </div>
     </div>
-    
+    <script src="library.js"></script>
 </body>
 </html>
