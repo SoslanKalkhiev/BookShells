@@ -6,7 +6,7 @@ let book = books.find((book)=> book.id ===bookId);
 
 const defaultcollections = JSON.parse(localStorage.getItem("defaultcollections"));
 
-let bookcollections = [];
+// let bookcollections = [];
 
 // let book = JSON.parse(localStorage.getItem('book'));
 
@@ -137,8 +137,13 @@ Addbtn.addEventListener('click',()=>{
                 collection.cnt++;
                 collection.books.push(book);
                 localStorage.setItem("defaultcollections", JSON.stringify(collections));
-                //Здесь какая-то проблема с первым добавлением!!! Исправить!!!!
-                renderCollections(JSON.parse(localStorage.getItem("defaultcollections"))); 
+                // //Здесь какая-то проблема с первым добавлением!!! Исправить!!!!
+                // renderCollections(JSON.parse(localStorage.getItem("defaultcollections"))); 
+
+                const label = document.createElement('label');
+                label.className = "genre-inf";
+                label.innerText=collection.rusname;
+                incollections.appendChild(label);
             }
         };
     })

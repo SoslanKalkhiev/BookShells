@@ -201,6 +201,8 @@ select{
     color: #e0dfdcdd;
 }
 .genre-inf{
+  height: 30px;
+  width: auto;
     margin: 5px 7px;
     color:#cca867;
     background: #292826;
@@ -247,6 +249,7 @@ select{
     width: 400px;
     height: 150px;
 }
+.in-collections p{margin-bottom: 0;}
 .description{
     grid-area: c;
     color: #c2bfb7;
@@ -542,11 +545,17 @@ h4, h2{
     height: 160px;
     display: flex;
     flex-direction: row;
+    margin: 30px 30px;
     border-radius: 10px;
     border: 1px solid #C58000;
     box-shadow: 4px 4px 4px #e195099b;
 }
-
+.delete{
+  width: 50px;
+  color: #e195099b;
+  background: #292826;
+  /* box-shadow: -2px -2px -2px #C58000; */
+}
 .chose-collection .img-book-mini{width: 130px; height: 158px; border-radius: 10px;}
 .book-desc .name{
   margin: 0 5px;
