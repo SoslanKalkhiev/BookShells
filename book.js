@@ -108,22 +108,36 @@ if (SetBtn) {
     });
 }
 
-if (OkBtn) {
-    OkBtn.addEventListener('click',()=>{
-        if(inputreview && inputreview.value){
-            if (book) book.review=inputreview.value;
-            books.forEach(b=>{
-                if(b.id===book.id){
-                    b.review = inputreview.value;
+if (OkBtn || inputreview) {
+    const submitReview = () => {
+        if (inputreview && inputreview.value) {
+            const val = inputreview.value.trim();
+            if (!val) return;
+            if (book) book.review = val;
+            books.forEach(b => {
+                if (b.id === (book && book.id)) {
+                    b.review = val;
                 }
             });
             localStorage.setItem("books", JSON.stringify(books));
-            if (textreview) textreview.innerHTML=`
-            <p>Ваша рецензия:</p>
-            <p>${book ? book.review : ''}</p>
-        `
-        };
-    });
+            if (textreview) textreview.innerHTML = `
+                <p>Ваша рецензия:</p>
+                <p>${book ? book.review : ''}</p>
+            `;
+            inputreview.value = '';
+        }
+    };
+
+    if (OkBtn) OkBtn.addEventListener('click', submitReview);
+
+    if (inputreview) {
+        inputreview.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault(); 
+                submitReview();
+            }
+        });
+    }
 }
 
 if (Addbtn) {
