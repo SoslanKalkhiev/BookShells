@@ -99,6 +99,7 @@ function searchBooks(title){
 }
 
 header.addEventListener('click',(event)=>{
+    if (event.target && event.target.tagName && event.target.tagName.toLowerCase() === 'a') return;
     event.preventDefault();
     if(event.target.classList.contains("all")){
         catalog.innerHTML = '';
