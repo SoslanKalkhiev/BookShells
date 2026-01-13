@@ -8,9 +8,9 @@
 </head>
     <header>
         <div class="information">
-            <a href="" class="back">Назад, на главную</a>
-            <a href="">Профиль</a>
-            <button class="library">Библиотека</button>
+            <a href="index.html" class="back">Назад, на главную</a>
+            <a href="profile.html">Профиль</a>
+            <a href="MyLibrary.html" class="library">Библиотека</a>
         </div>
     </header>
 <body>
@@ -30,15 +30,15 @@
 
     <div class="profile-stats">
       <div>
-        <strong>34</strong>
+        <strong id="books-count">0</strong>
         <span>книг прочитано</span>
       </div>
       <div>
-        <strong>16</strong>
+        <strong id="reviews-count">0</strong>
         <span>рецензий</span>
       </div>
       <div>
-        <strong>4.2</strong>
+        <strong id="avg-rating">0</strong>
         <span>средняя оценка</span>
       </div>
     </div>
@@ -145,5 +145,6 @@
   </section>
 
 </main>
+<script src="profile.js"></script>
 </body>
 </html>

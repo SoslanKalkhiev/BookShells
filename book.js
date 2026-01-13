@@ -1,10 +1,10 @@
 const params = new URLSearchParams(window.location.search);
 const bookId = "book"+Number(params.get('id'));
 
-const books = JSON.parse(localStorage.getItem('books'));
-let book = books.find((book)=> book.id ===bookId);
+const books = JSON.parse(localStorage.getItem('books')) || [];
+let book = books.find((book)=> book.id === bookId);
 
-const defaultcollections = JSON.parse(localStorage.getItem("defaultcollections"));
+const defaultcollections = JSON.parse(localStorage.getItem("defaultcollections")) || [];
 
 // let bookcollections = [];
 
@@ -19,9 +19,9 @@ let textreview = document.getElementById("text-review");
 let image = document.getElementById("img-on-page");
 
 let select = document.getElementById("select");
-if(!select.value) 
+if (select && !select.value) 
 {
-    defaultcollections.forEach(defcollection=>{
+    (defaultcollections || []).forEach(defcollection=>{
         const option = document.createElement('option');
         option.innerText=defcollection.rusname;
         select.appendChild(option);
@@ -29,20 +29,20 @@ if(!select.value)
 }
 
 function renderCollections(defaultcollections){
-    defaultcollections.forEach(defcollection=>{
-        defcollection.books.forEach(df=>{
-            if(df.id==bookId){
+    (defaultcollections || []).forEach(defcollection=>{
+        (defcollection.books || []).forEach(df=>{
+            if(df && df.id==bookId){
                 const label = document.createElement('label');
                 label.className = "genre-inf";
                 label.innerText=defcollection.rusname;
-                incollections.appendChild(label);
+                if (incollections) incollections.appendChild(label);
             }
         });
     });
 };
 
 
-renderCollections(JSON.parse(localStorage.getItem("defaultcollections")));
+renderCollections(defaultcollections);
 
 if(!book){ 
     bookinformation.innerHTML= '<p>Извините, книга не найдена ((</p>'; 
@@ -54,7 +54,7 @@ else{
 
     // <input type="text" id="name-collection" placeholder="Название коллекции">
     // `
-    image.src = book.image;
+    if (image && book && book.image) image.src = book.image;
 
     bookinformation.innerHTML=`
     <p class="name-inf">${book.name}</p>
@@ -95,68 +95,89 @@ const Addbtn = document.getElementById("Add");
 const librarybtn = document.getElementById("library");
 
 
-SetBtn.addEventListener('click',()=>{
-    if(inputrating.value){
-        books.forEach(b=>{
-            if(b.id===book.id){
-                b.rating = inputrating.value;
-            }
-        });
-        localStorage.setItem("books", JSON.stringify(books));
-    }
-});
-
-OkBtn.addEventListener('click',()=>{
-    if(inputreview.value){
-        book.review=inputreview.value;
-        books.forEach(b=>{
-            if(b.id===book.id){
-                b.review = inputreview.value;
-            }
-        });
-        localStorage.setItem("books", JSON.stringify(books));
-        textreview.innerHTML=`
-        <p>Ваша рецензия:</p>
-        <p>${book.review}</p>
-    `
-    };
-});
-
-Addbtn.addEventListener('click',()=>{
-    const collections = JSON.parse(localStorage.getItem('defaultcollections'));
-    collections.forEach(collection =>{
-        if(select.value === collection.rusname){
-            let flag = true;
-            collection.books.forEach(b=>{
+if (SetBtn) {
+    SetBtn.addEventListener('click',()=>{
+        if(inputrating && inputrating.value){
+            books.forEach(b=>{
                 if(b.id===book.id){
-                    flag = false;
-                    return;
+                    b.rating = inputrating.value;
                 }
             });
-            if(flag){
-                collection.cnt++;
-                collection.books.push(book);
-                localStorage.setItem("defaultcollections", JSON.stringify(collections));
-                // //Здесь какая-то проблема с первым добавлением!!! Исправить!!!!
-                // renderCollections(JSON.parse(localStorage.getItem("defaultcollections"))); 
+            localStorage.setItem("books", JSON.stringify(books));
+        }
+    });
+}
 
-                const label = document.createElement('label');
-                label.className = "genre-inf";
-                label.innerText=collection.rusname;
-                incollections.appendChild(label);
+if (OkBtn || inputreview) {
+    const submitReview = () => {
+        if (inputreview && inputreview.value) {
+            const val = inputreview.value.trim();
+            if (!val) return;
+            if (book) book.review = val;
+            books.forEach(b => {
+                if (b.id === (book && book.id)) {
+                    b.review = val;
+                }
+            });
+            localStorage.setItem("books", JSON.stringify(books));
+            if (textreview) textreview.innerHTML = `
+                <p>Ваша рецензия:</p>
+                <p>${book ? book.review : ''}</p>
+            `;
+            inputreview.value = '';
+        }
+    };
+
+    if (OkBtn) OkBtn.addEventListener('click', submitReview);
+
+    if (inputreview) {
+        inputreview.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault(); 
+                submitReview();
             }
-        };
-    })
-    
-})
+        });
+    }
+}
 
-if(localStorage.getItem('review')){
+if (Addbtn) {
+    Addbtn.addEventListener('click',()=>{
+        const collections = JSON.parse(localStorage.getItem('defaultcollections')) || [];
+        collections.forEach(collection =>{
+            if(select && select.value === collection.rusname){
+                let flag = true;
+                (collection.books || []).forEach(b=>{
+                    if(b.id===book.id){
+                        flag = false;
+                        return;
+                    }
+                });
+                if(flag){
+                    collection.cnt = (collection.cnt || 0) + 1;
+                    collection.books = collection.books || [];
+                    collection.books.push(book);
+                    localStorage.setItem("defaultcollections", JSON.stringify(collections));
+
+                    const label = document.createElement('label');
+                    label.className = "genre-inf";
+                    label.innerText=collection.rusname;
+                    if (incollections) incollections.appendChild(label);
+                }
+            };
+        })
+        
+    });
+}
+
+if(localStorage.getItem('review') && textreview){
     textreview.innerHTML=`
         <p>Ваша рецензия:</p>
         <p>${localStorage.getItem('review')}</p>
     `
 }
 
-librarybtn.addEventListener("click",()=>{
-    window.location.href = `MyLibrary.html`;
-});
+if (librarybtn) {
+    librarybtn.addEventListener("click",()=>{
+        window.location.href = `MyLibrary.html`;
+    });
+}
