@@ -52,4 +52,42 @@
     }
   });
 
+  // цели 
+  document.querySelectorAll('.goal').forEach(goal => {
+    const desc = (goal.querySelector('span')?.textContent || '').toLowerCase();
+    const valueEl = goal.querySelector('.value');
+    const fill = goal.querySelector('.progress-fill');
+    if (!fill || !valueEl) return;
+
+    let current = null;
+    if (desc.includes('книг')) current = booksRead;
+    else if (desc.includes('реценз')) current = reviewsCount;
+    else if (desc.includes('стр')) current = pagesRead;
+
+    const mDesc = desc.match(/(\d[\d\s]*)/);
+    let target = mDesc ? parseInt(mDesc[1].replace(/\s+/g, ''), 10) : null;
+
+    if (!target) {
+      const mVal = valueEl.textContent.trim().match(/(\d[\d\s]*)\s*\/\s*(\d[\d\s]*)/);
+      target = mVal ? parseInt(mVal[2].replace(/\s+/g, ''), 10) : 0;
+    }
+
+    if (current === null) {
+      const mVal2 = valueEl.textContent.trim().match(/(\d[\d\s]*)\s*\/\s*(\d[\d\s]*)/);
+      current = mVal2 ? parseInt(mVal2[1].replace(/\s+/g, ''), 10) || 0 : 0;
+    }
+
+    target = Number.isFinite(target) ? target : 0;
+    current = Number.isFinite(current) ? current : 0;
+
+    const percent = target > 0 ? Math.min(100, Math.round((current / target) * 100)) : 0;
+    fill.style.width = percent + '%';
+
+      valueEl.textContent = `${current}/${target}`;
+
+    fill.setAttribute('aria-valuenow', percent);
+    fill.setAttribute('aria-valuemin', 0);
+    fill.setAttribute('aria-valuemax', 100);
+  });
+
 })();
