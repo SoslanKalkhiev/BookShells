@@ -90,4 +90,23 @@
     fill.setAttribute('aria-valuemax', 100);
   });
 
+  // достижения (вроде работает)
+  document.querySelectorAll('.achievement').forEach(a => {
+    const desc = (a.querySelector('.achievement-description')?.textContent || '').toLowerCase();
+    const num = parseInt((desc.match(/\d+/) || [0])[0], 10) || 0;
+    let unlocked = false;
+
+    if (desc.includes('книг')) unlocked = booksRead >= num;
+    else if (desc.includes('реценз')) unlocked = reviewsCount >= num;
+    else if (desc.includes('дней') || desc.includes('дн')) unlocked = streakDays >= num;
+
+    if (unlocked) {
+      a.classList.add('active');
+      a.classList.remove('locked');
+    } else {
+      a.classList.remove('active');
+      a.classList.add('locked');
+    }
+  });
+
 })();
